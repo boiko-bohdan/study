@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Кабінет учня | НМТ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+
+<style>
+body{
+    background:#f4f6f9;
+}
+.sidebar{
+    height:100vh;
+    background:#1e2a38;
+    color:white;
+    position:fixed;
+    width:260px;
+    padding-top:20px;
+}
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    display:block;
+    padding:12px 20px;
+    font-size:15px;
+}
+.sidebar a:hover{
+    background:#2f3e50;
+}
+.main{
+    margin-left:260px;
+    padding:30px;
+}
+.card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+.progress{
+    height:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h4 class="text-center mb-4">🎓 НМТ Кабінет</h4>
+    <a href="#"><i class="fas fa-home me-2"></i> Головна</a>
+    <a href="#"><i class="fas fa-user me-2"></i> Профіль</a>
+    <a href="#"><i class="fas fa-book me-2"></i> Мої предмети</a>
+    <a href="#"><i class="fas fa-clipboard-check me-2"></i> Тести</a>
+    <a href="#"><i class="fas fa-chart-line me-2"></i> Прогрес</a>
+    <a href="#"><i class="fas fa-certificate me-2"></i> Досягнення</a>
+    <a href="#"><i class="fas fa-cog me-2"></i> Налаштування</a>
+    <a href="#"><i class="fas fa-sign-out-alt me-2"></i> Вихід</a>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+<!-- Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>👋 Вітаємо, Богдане!</h3>
+    <span class="badge bg-primary fs-6">Підготовка до НМТ 2026</span>
+</div>
+
+<!-- Profile + Progress -->
+<div class="row mb-4">
+
+<div class="col-md-4">
+    <div class="card p-3 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="120" class="mx-auto mb-3">
+        <h5>Бойко Богдан</h5>
+        <p class="text-muted mb-1">10 клас</p>
+        <p class="text-muted">Абітурієнт НМТ</p>
+        <button class="btn btn-outline-primary btn-sm">Редагувати профіль</button>
+    </div>
+</div>
+
+<div class="col-md-8">
+    <div class="card p-4">
+        <h5 class="mb-3">📊 Загальний прогрес підготовки</h5>
+
+        <p class="mb-1">Українська мова</p>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width:75%"></div>
+        </div>
+
+        <p class="mb-1">Математика</p>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-info" style="width:60%"></div>
+        </div>
+
+        <p class="mb-1">Історія України</p>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-warning" style="width:50%"></div>
+        </div>
+
+        <p class="mb-1">Біологія</p>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-danger" style="width:40%"></div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Subjects -->
+<div class="row mb-4">
+
+<div class="col-md-3">
+    <div class="card p-3 text-center">
+        <i class="fas fa-language fa-2x text-primary mb-2"></i>
+        <h6>Українська мова</h6>
+        <p class="text-muted">Тести • Теорія</p>
+        <button class="btn btn-sm btn-primary">Перейти</button>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card p-3 text-center">
+        <i class="fas fa-calculator fa-2x text-success mb-2"></i>
+        <h6>Математика</h6>
+        <p class="text-muted">Задачі • Тести</p>
+        <button class="btn btn-sm btn-success">Перейти</button>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card p-3 text-center">
+        <i class="fas fa-landmark fa-2x text-warning mb-2"></i>
+        <h6>Історія України</h6>
+        <p class="text-muted">Хронологія • Карти</p>
+        <button class="btn btn-sm btn-warning">Перейти</button>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card p-3 text-center">
+        <i class="fas fa-dna fa-2x text-danger mb-2"></i>
+        <h6>Біологія</h6>
+        <p class="text-muted">Теорія • Тести</p>
+        <button class="btn btn-sm btn-danger">Перейти</button>
+    </div>
+</div>
+
+</div>
+
+<!-- Tests -->
+<div class="card p-4 mb-4">
+<h5 class="mb-3">📝 Активні тести НМТ</h5>
+
+<table class="table">
+<thead>
+<tr>
+<th>Предмет</th>
+<th>Тип тесту</th>
+<th>Статус</th>
+<th>Дія</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Українська мова</td>
+<td>Повний тест НМТ</td>
+<td><span class="badge bg-success">Доступний</span></td>
+<td><button class="btn btn-sm btn-primary">Почати</button></td>
+</tr>
+
+<tr>
+<td>Математика</td>
+<td>Тренувальний</td>
+<td><span class="badge bg-warning">В процесі</span></td>
+<td><button class="btn btn-sm btn-warning">Продовжити</button></td>
+</tr>
+
+<tr>
+<td>Історія України</td>
+<td>Діагностичний</td>
+<td><span class="badge bg-secondary">Завершено</span></td>
+<td><button class="btn btn-sm btn-secondary">Результат</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- Analytics -->
+<div class="row">
+
+<div class="col-md-6">
+    <div class="card p-4">
+        <h5>📈 Аналітика</h5>
+        <ul>
+            <li>Середній результат: <b>162 бали</b></li>
+            <li>Пройдено тестів: <b>14</b></li>
+            <li>Годин навчання: <b>38</b></li>
+            <li>Рейтинг підготовки: <b>Високий</b></li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="card p-4">
+        <h5>🏆 Досягнення</h5>
+        <ul>
+            <li>✔ Пройдено 10 тестів</li>
+            <li>✔ 80% з математики</li>
+            <li>✔ 90% з української мови</li>
+            <li>✔ 30 годин навчання</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

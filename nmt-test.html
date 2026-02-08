@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Генератор тестів НМТ</title>
+<style>
+body{font-family:Arial;background:#f4f6f9;margin:0;padding:0}
+.container{max-width:1100px;margin:auto;padding:20px}
+h1{text-align:center}
+.panel{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+select,button,input{padding:10px;width:100%;margin:5px 0;border-radius:5px;border:1px solid #ccc}
+button{background:#2563eb;color:white;border:none;font-size:16px;cursor:pointer}
+button:hover{background:#1e40af}
+.question{margin:15px 0;padding:10px;border-bottom:1px solid #ddd}
+.correct{color:green;font-weight:bold}
+.wrong{color:red;font-weight:bold}
+.timer{font-size:18px;font-weight:bold;text-align:right}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎓 Генератор тестів НМТ</h1>
+
+<div class="panel">
+<h2>Налаштування тесту</h2>
+<select id="subject">
+<option value="ua">Українська мова</option>
+<option value="math">Математика</option>
+<option value="history">Історія України</option>
+</select>
+
+<input type="number" id="count" placeholder="Кількість запитань (наприклад 10)" value="10">
+
+<button onclick="startTest()">Згенерувати тест</button>
+</div>
+
+<div class="panel">
+<div class="timer" id="timer"></div>
+<div id="test"></div>
+<button onclick="checkTest()">Завершити тест</button>
+<div id="result"></div>
+</div>
+</div>
+
+<script>
+const questions = {
+ua: [
+{q:"Синонім до слова 'швидкий'", a:["прудкий","важкий","тихий","гіркий"], c:0},
+{q:"Скільки літер в українському алфавіті?", a:["32","33","31","34"], c:1},
+{q:"Антонім до слова 'сміливий'", a:["боязкий","розумний","сильний","швидкий"], c:0}
+],
+math: [
+{q:"5 + 7 = ?", a:["10","11","12","13"], c:2},
+{q:"9 × 6 = ?", a:["54","56","48","64"], c:0},
+{q:"√49 = ?", a:["6","7","8","5"], c:1}
+],
+history: [
+{q:"У якому році проголошено незалежність України?", a:["1989","1990","1991","1992"], c:2},
+{q:"Перший Президент України", a:["Кравчук","Кучма","Ющенко","Порошенко"], c:0},
+{q:"Столиця Київської Русі", a:["Чернігів","Київ","Львів","Переяслав"], c:1}
+]
+};
+
+let currentQuestions=[];
+let time=0;
+let timerInt;
+
+function startTest(){
+const subject=document.getElementById('subject').value;
+const count=parseInt(document.getElementById('count').value);
+const pool=questions[subject];
+currentQuestions=[];
+for(let i=0;i<count;i++){
+currentQuestions.push(pool[Math.floor(Math.random()*pool.length)]);
+}
+renderTest();
+startTimer(count*60);
+}
+
+function renderTest(){
+const testDiv=document.getElementById('test');
+testDiv.innerHTML="";
+currentQuestions.forEach((q,i)=>{
+let html=`<div class='question'><b>${i+1}. ${q.q}</b>`;
+q.a.forEach((opt,j)=>{
+html+=`<div><input type='radio' name='q${i}' value='${j}'> ${opt}</div>`;
+});
+html+="</div>";
+testDiv.innerHTML+=html;
+});
+}
+
+function checkTest(){
+let score=0;
+currentQuestions.forEach((q,i)=>{
+const ans=document.querySelector(`input[name='q${i}']:checked`);
+if(ans && parseInt(ans.value)===q.c) score++;
+});
+clearInterval(timerInt);
+document.getElementById('result').innerHTML=`<h2>Результат: ${score} / ${currentQuestions.length}</h2>`;
+}
+
+function startTimer(sec){
+time=sec;
+const timerDiv=document.getElementById('timer');
+clearInterval(timerInt);
+timerInt=setInterval(()=>{
+let m=Math.floor(time/60);
+let s=time%60;
+timerDiv.innerText=`Час: ${m}:${s<10?'0'+s:s}`;
+time--;
+if(time<0){clearInterval(timerInt);checkTest();}
+},1000);
+}
+</script>
+</body>
+</html>
